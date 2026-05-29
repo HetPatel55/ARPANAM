@@ -139,6 +139,16 @@ export function HeroSection() {
               {siteInfo.admissionYear}
             </span>
           </motion.div>
+          <motion.div
+            className="absolute bottom-16 left-0 hidden rounded-lg border border-blue-100 bg-white px-4 py-3 text-sm font-bold text-slate-700 shadow-card md:flex md:items-center md:gap-3"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100 text-[#1D4ED8]">
+              <Sparkles className="h-5 w-5" />
+            </span>
+            Creative early learning
+          </motion.div>
         </motion.div>
       </div>
     </section>

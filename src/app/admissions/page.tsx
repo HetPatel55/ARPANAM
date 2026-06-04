@@ -13,21 +13,23 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { admissionSteps, documents, eligibility, faqs, imageLibrary, siteInfo } from "@/data/site";
+import { admissionSteps, documents, eligibility, faqs, imageLibrary, siteContent } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Admissions",
   description:
-    "Admissions Open 2026-2027 at Arpanam Kids School. View admission process, eligibility, documents, inquiry form, and FAQs."
+    "Admissions Open 2026-2027 at Arpanam Kids School. View admission process, eligibility, documents, enquiry form, and FAQs."
 };
 
-export default function AdmissionsPage() {
+export default async function AdmissionsPage() {
+  const info = siteContent.siteInfo;
+
   return (
     <>
       <PageHero
-        eyebrow={`Admissions Open ${siteInfo.admissionYear}`}
+        eyebrow={`Admissions Open ${info.admissionYear}`}
         title="A simple, warm admission process for your child's bright beginning."
-        description="Explore eligibility, required documents, inquiry steps, and FAQs for Jr. KG., Sr. KG., and Balvatika admissions."
+        description="Explore eligibility, required documents, enquiry steps, and FAQs for Jr. KG., Sr. KG., and Balvatika admissions."
         image={imageLibrary.building}
         badgeVariant="sunshine"
       />
@@ -52,7 +54,7 @@ export default function AdmissionsPage() {
                         <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-primary">
                           <Icon className="h-6 w-6" />
                         </span>
-                        <span className="font-heading text-4xl font-extrabold text-blue-100">
+                        <span className="font-heading text-3xl font-extrabold text-blue-100">
                           0{index + 1}
                         </span>
                       </div>
@@ -73,7 +75,7 @@ export default function AdmissionsPage() {
             <SectionHeading
               align="left"
               eyebrow="Eligibility"
-              title="Choose the program that matches your child's foundational stage."
+              title="Choose the programme that matches your child's foundational stage."
               description="Age and readiness details can be confirmed during the admission interaction."
             />
           </Reveal>
@@ -99,7 +101,7 @@ export default function AdmissionsPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-white">
+      <section id="enquiry-form" className="scroll-mt-28 section-padding bg-white">
         <div className="container grid gap-8 lg:grid-cols-2">
           <Reveal>
             <Card className="h-full">
@@ -125,7 +127,7 @@ export default function AdmissionsPage() {
             <Card className="h-full">
               <CardContent className="p-6 sm:p-8">
                 <Badge variant="sunshine" className="mb-4">
-                  Inquiry
+                  Enquiry
                 </Badge>
                 <h2 className="font-heading text-3xl font-extrabold text-slate-950">
                   Start Your Enquiry
@@ -135,7 +137,7 @@ export default function AdmissionsPage() {
                   visit slots, and next steps.
                 </p>
                 <div className="mt-6">
-                  <ContactForm buttonLabel="Submit Inquiry" />
+                  <ContactForm buttonLabel="Submit Enquiry" />
                 </div>
               </CardContent>
             </Card>

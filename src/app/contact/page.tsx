@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
 
 import { ContactForm } from "@/components/common/ContactForm";
 import { PageHero } from "@/components/common/PageHero";
@@ -7,7 +7,8 @@ import { Reveal } from "@/components/common/Reveal";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { contactCards, imageLibrary, siteInfo } from "@/data/site";
+import { contactCards, imageLibrary, siteContent } from "@/data/site";
+import { whatsappHref } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -21,7 +22,20 @@ const socialLinks = [
   { label: "YouTube", icon: Youtube }
 ];
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const info = siteContent.siteInfo;
+  const cards = contactCards.map((card) => ({
+    ...card,
+    value:
+      card.title === "Admissions Desk"
+        ? info.phone
+        : card.title === "Email"
+          ? info.email
+          : card.title === "Campus"
+            ? info.address
+            : card.value
+  }));
+
   return (
     <>
       <PageHero
@@ -52,7 +66,7 @@ export default function ContactPage() {
           </Reveal>
           <Reveal delay={0.08}>
             <div className="grid gap-4 sm:grid-cols-2">
-              {contactCards.map((card) => {
+              {cards.map((card) => {
                 const Icon = card.icon;
                 return (
                   <Card key={card.title} className="h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-glow">
@@ -74,14 +88,14 @@ export default function ContactPage() {
       <section className="section-padding bg-blue-50/70">
         <div className="container grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <Reveal>
-            <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-card">
+            <div className="relative min-h-[360px] overflow-hidden rounded-[1.5rem] border border-blue-100 bg-white shadow-card">
               <div className="absolute inset-0 soft-grid" />
               <div className="absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-white shadow-glow">
                 <span className="font-heading text-2xl font-extrabold">AK</span>
               </div>
               <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-white/90 p-5 shadow-card backdrop-blur">
-                <p className="font-heading text-xl font-bold text-slate-950">{siteInfo.name}</p>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{siteInfo.address}</p>
+                <p className="font-heading text-xl font-bold text-slate-950">{info.name}</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{info.address}</p>
               </div>
             </div>
           </Reveal>
@@ -93,6 +107,12 @@ export default function ContactPage() {
               description="Plan your visit and connect with the admissions desk before arriving at the school campus."
             />
             <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild className="bg-[#16A34A] text-white hover:bg-green-700">
+                <a href={whatsappHref(info.whatsappNumber)} target="_blank" rel="noreferrer">
+                  <MessageCircle className="h-4 w-4" />
+                  Chat on WhatsApp
+                </a>
+              </Button>
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (

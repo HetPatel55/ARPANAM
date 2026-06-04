@@ -22,6 +22,7 @@ import {
   Trophy,
   UsersRound
 } from "lucide-react";
+import type { SiteContent } from "@/types/site";
 
 export const siteInfo = {
   name: "Arpanam Kids School",
@@ -29,15 +30,46 @@ export const siteInfo = {
   tagline: "A nurturing preschool where confident little learners begin beautifully.",
   admissionYear: "2026-2027",
   phone: "+91 98765 43210",
+  whatsappNumber: "+91 98765 43210",
   email: "admissions@arpanamkids.school",
   address: "Arpanam Kids School Campus, Main Road, India",
   socials: ["Instagram", "Facebook", "YouTube"]
 };
 
+export const siteContent: SiteContent = {
+  siteInfo,
+  home: {
+    heroTitle: "A Bright Beginning for",
+    heroHighlight: "Bright Futures",
+    heroDescription:
+      "A warm, modern preschool where children feel safe, seen, and excited to learn through purposeful play, early academics, creative expression, and confident daily routines."
+  },
+  programs: [
+    {
+      title: "Jr. KG.",
+      age: "4+ Years",
+      description:
+        "A gentle bridge into structured learning through phonics readiness, numbers, stories, creativity, and social skills."
+    },
+    {
+      title: "Sr. KG.",
+      age: "5+ Years",
+      description:
+        "School-readiness with confident communication, early literacy, math foundations, projects, and independence."
+    },
+    {
+      title: "Balvatika",
+      age: "Foundational Years",
+      description:
+        "A joyful foundational program inspired by activity-based learning, values, curiosity, and whole-child growth."
+    }
+  ]
+};
+
 export const navItems = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Programs", href: "/programs" },
+  { label: "Programmes", href: "/programs" },
   { label: "Activities", href: "/activities" },
   { label: "Gallery", href: "/gallery" },
   { label: "Admissions", href: "/admissions" },
@@ -304,7 +336,7 @@ export const testimonials = [
 export const facilities = [
   {
     title: "Smart Classrooms",
-    description: "Bright, well-organized rooms with learning corners and engaging teaching resources.",
+    description: "Bright, well-organised rooms with learning corners and engaging teaching resources.",
     image: imageLibrary.classroom,
     icon: Landmark
   },
@@ -368,7 +400,7 @@ export const documents = [
 
 export const faqs = [
   {
-    question: "Which programs are open for admission?",
+    question: "Which programmes are open for admission?",
     answer: "Admissions are open for Jr. KG., Sr. KG., and Balvatika for the 2026-2027 academic year."
   },
   {
@@ -399,7 +431,7 @@ export const eligibility = [
 ];
 
 export const stats = [
-  { value: "3", label: "Focused programs" },
+  { value: "3", label: "Focused programmes" },
   { value: "5+", label: "Activity pathways" },
   { value: "100%", label: "Child-first spaces" },
   { value: "2026", label: "Admissions open" }

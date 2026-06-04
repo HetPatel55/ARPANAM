@@ -1,19 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CalendarCheck, MapPin, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, CalendarCheck, MapPin, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { siteInfo } from "@/data/site";
+import { whatsappHref } from "@/lib/contact";
+import type { SiteContent } from "@/types/site";
 
 const programBadges = ["Jr KG", "Sr KG", "Balvatika"];
 
-export function HeroSection() {
+export function HeroSection({ content }: { content?: SiteContent }) {
+  const info = content?.siteInfo ?? siteInfo;
+  const home = content?.home;
+
   return (
-    <section className="relative overflow-hidden bg-[#F7FBFF] pt-32 sm:pt-36">
+    <section className="relative overflow-hidden bg-[#F7FBFF] pt-28 sm:pt-32">
       <div className="absolute inset-0 soft-grid opacity-55" />
       <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-white via-white to-transparent" />
       <div
@@ -33,7 +38,7 @@ export function HeroSection() {
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="container relative grid min-h-[calc(100vh-8rem)] items-center gap-12 pb-28 pt-8 lg:grid-cols-[0.98fr_1.02fr] lg:pb-32">
+      <div className="container relative grid min-h-[calc(100vh-10rem)] items-center gap-10 pb-20 pt-6 lg:grid-cols-[0.98fr_1.02fr] lg:pb-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -42,18 +47,17 @@ export function HeroSection() {
         >
           <Badge variant="sky" className="mb-5 gap-2 bg-white text-[#1D4ED8] shadow-sm">
             <Sparkles className="h-3.5 w-3.5" />
-            Premium preschool admissions {siteInfo.admissionYear}
+            Premium preschool admissions {info.admissionYear}
           </Badge>
-          <h1 className="font-heading text-5xl font-extrabold leading-[1.04] text-slate-950 sm:text-6xl lg:text-7xl">
-            A Bright Beginning for{" "}
+          <h1 className="font-heading text-4xl font-extrabold leading-[1.04] text-slate-950 sm:text-5xl lg:text-6xl">
+            {home?.heroTitle ?? "A Bright Beginning for"}{" "}
             <span className="premium-gradient-text animate-shimmer block sm:inline">
-              Bright Futures
+              {home?.heroHighlight ?? "Bright Futures"}
             </span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-            A warm, modern preschool where children feel safe, seen, and excited to
-            learn through purposeful play, early academics, creative expression, and
-            confident daily routines.
+          <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+            {home?.heroDescription ??
+              "A warm, modern preschool where children feel safe, seen, and excited to learn through purposeful play, early academics, creative expression, and confident daily routines."}
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             {programBadges.map((badge, index) => (
@@ -71,7 +75,7 @@ export function HeroSection() {
               </span>
             ))}
           </div>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg" className="bg-[#1D4ED8] hover:bg-blue-800">
               <Link href="/admissions">
                 Apply for Admission
@@ -84,8 +88,14 @@ export function HeroSection() {
                 Book a Visit
               </Link>
             </Button>
+            <Button asChild size="lg" variant="outline" className="border-green-200 bg-green-50 text-green-700 hover:bg-green-100">
+              <a href={whatsappHref(info.whatsappNumber)} target="_blank" rel="noreferrer">
+                <MessageCircle className="h-4 w-4" />
+                Chat on WhatsApp
+              </a>
+            </Button>
           </div>
-          <div className="mt-9 flex flex-wrap gap-5 text-sm font-semibold text-slate-600">
+          <div className="mt-7 flex flex-wrap gap-5 text-sm font-semibold text-slate-600">
             <span className="inline-flex items-center gap-2">
               <ShieldCheck className="h-5 w-5 text-[#22C55E]" />
               Secure campus
@@ -101,10 +111,10 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.96, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative min-h-[470px] lg:min-h-[590px]"
+          className="relative min-h-[380px] lg:min-h-[480px]"
         >
-          <div className="absolute inset-x-6 bottom-2 top-16 rotate-3 rounded-[2rem] border border-[#BFDBFE] bg-white" />
-          <div className="relative mx-auto max-w-xl overflow-hidden rounded-[2rem] border-[10px] border-white bg-white shadow-[0_28px_90px_rgba(29,78,216,0.18)]">
+          <div className="absolute inset-x-6 bottom-2 top-14 rotate-3 rounded-[1.5rem] border border-[#BFDBFE] bg-white" />
+          <div className="relative mx-auto max-w-[29rem] overflow-hidden rounded-[1.5rem] border-8 border-white bg-white shadow-[0_24px_70px_rgba(29,78,216,0.18)]">
             <Image
               src="/assets/arpanam-hero-building.png"
               alt="Bright school campus for Arpanam Kids School"
@@ -113,7 +123,7 @@ export function HeroSection() {
               priority
               className="aspect-[4/5] w-full object-cover"
             />
-            <div className="absolute inset-x-5 bottom-5 rounded-lg bg-white/92 p-4 text-slate-900 shadow-card backdrop-blur">
+            <div className="absolute inset-x-4 bottom-4 rounded-lg bg-white/92 p-3 text-slate-900 shadow-card backdrop-blur">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-xs font-bold uppercase text-[#1D4ED8]">Arpanam Kids School</p>
@@ -136,7 +146,7 @@ export function HeroSection() {
               Admissions Open
             </span>
             <span className="mt-1 block font-heading text-xl text-[#1D4ED8]">
-              {siteInfo.admissionYear}
+              {info.admissionYear}
             </span>
           </motion.div>
         </motion.div>

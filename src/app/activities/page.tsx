@@ -43,7 +43,7 @@ export default function ActivitiesPage() {
               description="Each activity blends joy with purpose, helping children develop physical, creative, emotional, and thinking skills."
             />
           </Reveal>
-          <div className="mt-12 grid auto-rows-[260px] gap-5 lg:grid-cols-3">
+          <div className="mt-10 grid auto-rows-[220px] gap-5 lg:grid-cols-3">
             {activities.map((activity, index) => {
               const Icon = activity.icon;
               return (

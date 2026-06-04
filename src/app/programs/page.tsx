@@ -6,13 +6,13 @@ import { Reveal } from "@/components/common/Reveal";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { checks, imageLibrary, programs } from "@/data/site";
+import { checks, imageLibrary, programs, siteContent } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Programs",
+  title: "Programmes",
   description:
-    "Explore Jr. KG., Sr. KG., and Balvatika programs at Arpanam Kids School with learning approach, activities, benefits, and classroom visuals."
+    "Explore Jr. KG., Sr. KG., and Balvatika programmes at Arpanam Kids School with learning approach, activities, benefits, and classroom visuals."
 };
 
 const programDetails = [
@@ -39,11 +39,16 @@ const programDetails = [
   }
 ];
 
-export default function ProgramsPage() {
+export default async function ProgramsPage() {
+  const editablePrograms = programs.map((program, index) => ({
+    ...program,
+    ...(siteContent.programs[index] ?? {})
+  }));
+
   return (
     <>
       <PageHero
-        eyebrow="Our Programs"
+        eyebrow="Our Programmes"
         title="Age-right learning pathways for confident early school years."
         description="Jr. KG., Sr. KG., and Balvatika at Arpanam Kids School are designed to balance joyful learning, clear routines, creative expression, and foundational readiness."
         image={imageLibrary.children}
@@ -56,11 +61,11 @@ export default function ProgramsPage() {
             <SectionHeading
               eyebrow="Learning Approach"
               title="Purposeful play, foundational skills, and gentle structure."
-              description="Each program is shaped around young children's developmental needs while keeping the school experience warm, modern, and confidence-building."
+              description="Each programme is shaped around young children's developmental needs while keeping the school experience warm, modern, and confidence-building."
             />
           </Reveal>
-          <div className="mt-14 space-y-14">
-            {programs.map((program, index) => {
+          <div className="mt-10 space-y-10">
+            {editablePrograms.map((program, index) => {
               const Icon = program.icon;
               const details = programDetails.find((item) => item.title === program.title);
               const CheckIcon = checks;

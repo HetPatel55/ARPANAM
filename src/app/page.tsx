@@ -4,16 +4,17 @@ import { HeroSection } from "@/components/sections/home/HeroSection";
 import { ProgramsPreviewSection } from "@/components/sections/home/ProgramsPreviewSection";
 import { TestimonialsSection } from "@/components/sections/home/TestimonialsSection";
 import { WhyChooseUsSection } from "@/components/sections/home/WhyChooseUsSection";
+import { siteContent } from "@/data/site";
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <>
-      <HeroSection />
+      <HeroSection content={siteContent} />
       <WhyChooseUsSection />
-      <ProgramsPreviewSection />
+      <ProgramsPreviewSection content={siteContent} />
       <ActivitiesPreviewSection />
       <TestimonialsSection />
-      <AdmissionCtaSection />
+      <AdmissionCtaSection content={siteContent} />
     </>
   );
 }

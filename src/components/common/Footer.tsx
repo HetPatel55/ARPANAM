@@ -52,7 +52,7 @@ export function Footer() {
           </div>
         </div>
         <div>
-          <h3 className="font-heading text-lg font-bold">Programs</h3>
+          <h3 className="font-heading text-lg font-bold">Programmes</h3>
           <div className="mt-5 space-y-3">
             {programs.map((program) => (
               <Link

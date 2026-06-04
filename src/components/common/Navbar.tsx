@@ -30,7 +30,7 @@ export function Navbar() {
     >
       {isHome ? (
         <div className="border-b border-blue-100/80 bg-[#1D4ED8] text-white">
-          <div className="container flex min-h-9 items-center justify-between gap-4 py-2 text-xs font-semibold">
+          <div className="container flex min-h-8 items-center justify-between gap-4 py-1.5 text-xs font-semibold">
             <span className="inline-flex items-center gap-2">
               <CalendarDays className="h-3.5 w-3.5 text-[#FACC15]" />
               Admissions open for Jr KG, Sr KG and Balvatika 2026-2027
@@ -42,7 +42,7 @@ export function Navbar() {
           </div>
         </div>
       ) : null}
-      <nav className="container flex h-20 items-center justify-between gap-4">
+      <nav className="container flex h-16 items-center justify-between gap-4">
         <Logo />
         <div className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => {

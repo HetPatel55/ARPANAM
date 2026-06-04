@@ -15,7 +15,19 @@ import {
 import { galleryAlbums } from "@/data/site";
 import { cn } from "@/lib/utils";
 
-type GalleryAlbum = (typeof galleryAlbums)[number];
+export type GalleryAlbum = {
+  id?: string;
+  title: string;
+  category: string;
+  description: string;
+  cover: string;
+  accent: string;
+  images: {
+    id?: string;
+    title: string;
+    src: string;
+  }[];
+};
 
 type LightboxGalleryProps = {
   albums?: GalleryAlbum[];
@@ -53,9 +65,9 @@ export function LightboxGallery({
     <>
       {showFilters ? (
         <div className="mb-8 flex flex-wrap justify-center gap-2">
-          {categories.map((item) => (
+          {categories.map((item, index) => (
             <button
-              key={item}
+              key={`${item || "category"}-${index}`}
               type="button"
               onClick={() => setCategory(item)}
               className={cn(
@@ -74,7 +86,7 @@ export function LightboxGallery({
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {filtered.map((album, index) => (
           <motion.button
-            key={`${album.title}-${category}`}
+            key={`${album.id ?? album.title}-${category}`}
             type="button"
             onClick={() => openAlbum(album)}
             className="group relative overflow-hidden rounded-lg bg-blue-50 text-left shadow-card transition-all duration-300 hover:-translate-y-2 hover:shadow-glow"
@@ -87,7 +99,7 @@ export function LightboxGallery({
               className="absolute inset-x-5 top-5 z-10 h-1.5 rounded-full"
               style={{ backgroundColor: album.accent }}
             />
-            <span className="relative block h-72 overflow-hidden">
+            <span className="relative block h-60 overflow-hidden">
               <Image
                 src={album.cover}
                 alt={`${album.title} album cover`}
@@ -139,7 +151,7 @@ export function LightboxGallery({
                 <div className="grid grid-cols-2 gap-3 lg:grid-cols-1">
                   {selected.images.map((image, index) => (
                     <button
-                      key={`${selected.title}-${image.title}`}
+                      key={`${image.id ?? `${selected.title}-${image.title}`}`}
                       type="button"
                       onClick={() => setActiveIndex(index)}
                       className={cn(

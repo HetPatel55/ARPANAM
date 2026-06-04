@@ -60,7 +60,7 @@ export default function AboutPage() {
             <Badge variant="sunshine" className="mb-4">
               Our Story
             </Badge>
-            <h2 className="font-heading text-3xl font-extrabold leading-tight text-slate-950 sm:text-4xl">
+            <h2 className="font-heading text-2xl font-extrabold leading-tight text-slate-950 sm:text-3xl">
               A bright beginning, thoughtfully shaped for young learners.
             </h2>
             <p className="mt-5 leading-8 text-slate-600">
@@ -137,7 +137,7 @@ export default function AboutPage() {
           <Reveal delay={0.08}>
             <div className="rounded-[2rem] bg-gradient-to-br from-primary via-sky-brand to-sunshine-deep p-1 shadow-glow">
               <div className="rounded-[1.85rem] bg-white p-8">
-                <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-[2rem] bg-blue-50 font-heading text-4xl font-extrabold text-primary">
+                <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-[1.5rem] bg-blue-50 font-heading text-3xl font-extrabold text-primary">
                   AK
                 </div>
                 <p className="mt-6 text-center text-sm leading-7 text-slate-600">
@@ -188,7 +188,7 @@ export default function AboutPage() {
             {facilities.map((facility, index) => (
               <Reveal key={facility.title} delay={index * 0.05}>
                 <div className="overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-card">
-                  <div className="relative h-64">
+                  <div className="relative h-56">
                     <Image src={facility.image} alt={facility.title} fill className="object-cover" />
                   </div>
                   <div className="p-6">

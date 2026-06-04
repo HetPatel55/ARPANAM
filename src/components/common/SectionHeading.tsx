@@ -29,10 +29,10 @@ export function SectionHeading({
       <Badge variant="sky" className="mb-4">
         {eyebrow}
       </Badge>
-      <h2 className="font-heading text-3xl font-extrabold leading-tight text-slate-950 sm:text-4xl lg:text-5xl">
+      <h2 className="font-heading text-2xl font-extrabold leading-tight text-slate-950 sm:text-3xl lg:text-4xl">
         {title}
       </h2>
-      {description ? <p className="mt-4 text-base leading-8 text-slate-600">{description}</p> : null}
+      {description ? <p className="mt-4 text-base leading-7 text-slate-600">{description}</p> : null}
     </div>
   );
 }

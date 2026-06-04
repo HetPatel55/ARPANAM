@@ -1,19 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CalendarCheck, CheckCircle2, Phone, Sparkles } from "lucide-react";
+import { ArrowRight, CalendarCheck, CheckCircle2, MessageCircle, Phone, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { siteInfo } from "@/data/site";
+import { compactPhone, whatsappHref } from "@/lib/contact";
+import type { SiteContent } from "@/types/site";
 
 const admissionHighlights = ["Jr KG", "Sr KG", "Balvatika"];
 
-export function AdmissionCtaSection() {
+export function AdmissionCtaSection({ content }: { content?: SiteContent }) {
+  const info = content?.siteInfo ?? siteInfo;
+
   return (
-    <section className="relative overflow-hidden bg-white py-16 lg:py-24">
+    <section className="relative overflow-hidden bg-white py-12 lg:py-20">
       <div className="container">
-        <div className="relative overflow-hidden rounded-[1.75rem] bg-[linear-gradient(135deg,#1D4ED8_0%,#2563EB_38%,#38BDF8_100%)] px-6 py-10 text-white shadow-[0_32px_95px_rgba(29,78,216,0.24)] sm:px-10 sm:py-12 lg:px-14">
+        <div className="relative overflow-hidden rounded-[1.5rem] bg-[linear-gradient(135deg,#1D4ED8_0%,#2563EB_38%,#38BDF8_100%)] px-6 py-8 text-white shadow-[0_32px_95px_rgba(29,78,216,0.24)] sm:px-8 sm:py-10 lg:px-12">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(250,204,21,0.24),transparent_24rem),radial-gradient(circle_at_88%_18%,rgba(236,72,153,0.20),transparent_21rem),linear-gradient(135deg,rgba(255,255,255,0.10),transparent_48%)]" />
           <div className="absolute inset-0 soft-grid opacity-[0.12]" />
           <motion.div
@@ -37,10 +41,10 @@ export function AdmissionCtaSection() {
                 <Sparkles className="h-4 w-4" />
                 Admissions Open
               </div>
-              <h2 className="font-heading text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
-                Admissions Open {siteInfo.admissionYear}
+              <h2 className="font-heading text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+                Admissions Open {info.admissionYear}
               </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/90">
+              <p className="mt-4 max-w-2xl text-base leading-7 text-white/90">
                 Give your child a joyful, secure, and inspiring start at Arpanam Kids School.
                 Limited seats are open for Jr KG, Sr KG, and Balvatika.
               </p>
@@ -63,14 +67,14 @@ export function AdmissionCtaSection() {
                   New Session
                 </p>
                 <p className="mt-2 font-heading text-3xl font-extrabold text-[#1D4ED8]">
-                  {siteInfo.admissionYear}
+                  {info.admissionYear}
                 </p>
                 <p className="mt-3 text-sm leading-6 text-slate-600">
-                  Schedule a campus visit and meet our admissions team for program guidance.
+                  Schedule a campus visit and meet our admissions team for programme guidance.
                 </p>
                 <div className="mt-5 grid gap-3">
                   <Button asChild size="lg" className="bg-[#1D4ED8] text-white hover:bg-blue-800">
-                    <Link href="/admissions">
+                    <Link href="/admissions#enquiry-form">
                       Enquire Now
                       <ArrowRight className="h-4 w-4" />
                     </Link>
@@ -82,9 +86,15 @@ export function AdmissionCtaSection() {
                     </Link>
                   </Button>
                   <Button asChild variant="outline" size="lg" className="border-blue-100 bg-white">
-                    <a href={`tel:${siteInfo.phone.replace(/\s+/g, "")}`}>
+                    <a href={`tel:${compactPhone(info.phone)}`}>
                       <Phone className="h-4 w-4" />
                       Call Admissions
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="border-green-100 bg-green-50 text-green-700 hover:bg-green-100">
+                    <a href={whatsappHref(info.whatsappNumber)} target="_blank" rel="noreferrer">
+                      <MessageCircle className="h-4 w-4" />
+                      Chat on WhatsApp
                     </a>
                   </Button>
                 </div>

@@ -4,7 +4,7 @@ import { LightboxGallery } from "@/components/common/LightboxGallery";
 import { PageHero } from "@/components/common/PageHero";
 import { Reveal } from "@/components/common/Reveal";
 import { SectionHeading } from "@/components/common/SectionHeading";
-import { imageLibrary } from "@/data/site";
+import { galleryAlbums, imageLibrary } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "View the Arpanam Kids School gallery with classroom, activity, event, and celebration moments."
 };
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
   return (
     <>
       <PageHero
@@ -32,7 +32,7 @@ export default function GalleryPage() {
             />
           </Reveal>
           <div className="mt-12">
-            <LightboxGallery />
+            <LightboxGallery albums={galleryAlbums} />
           </div>
         </div>
       </section>

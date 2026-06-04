@@ -21,15 +21,15 @@ export function PageHero({
   badgeVariant = "sky"
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-hero-radial pt-32">
+    <section className="relative overflow-hidden bg-hero-radial pt-28">
       <div className="absolute left-8 top-32 h-16 w-16 rounded-full bg-sunshine/30 blur-2xl" />
       <div className="absolute right-10 top-24 h-24 w-24 rounded-full bg-sky-brand/25 blur-3xl" />
-      <div className="container grid gap-12 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div className="container grid gap-10 pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <Reveal>
           <Badge variant={badgeVariant} className="mb-5">
             {eyebrow}
           </Badge>
-          <h1 className="max-w-3xl font-heading text-4xl font-extrabold leading-tight text-slate-950 sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-3xl font-heading text-3xl font-extrabold leading-tight text-slate-950 sm:text-4xl lg:text-5xl">
             {title}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">{description}</p>

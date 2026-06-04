@@ -15,7 +15,7 @@ export function GalleryPreviewSection() {
               align="left"
               eyebrow="Gallery"
               title="Moments from classrooms, celebrations, events, and activity days."
-              description="A visual glimpse of the warm, colorful, and confident world children experience at Arpanam."
+              description="A visual glimpse of the warm, colourful, and confident world children experience at Arpanam."
             />
           </Reveal>
           <Reveal delay={0.08}>

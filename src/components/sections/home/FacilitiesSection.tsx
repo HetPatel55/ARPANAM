@@ -21,7 +21,7 @@ export function FacilitiesSection() {
             return (
               <Reveal key={facility.title} delay={index * 0.06}>
                 <article className="group grid overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-glow sm:grid-cols-[0.95fr_1.05fr]">
-                  <div className="relative min-h-64 overflow-hidden">
+                  <div className="relative min-h-56 overflow-hidden">
                     <Image
                       src={facility.image}
                       alt={facility.title}

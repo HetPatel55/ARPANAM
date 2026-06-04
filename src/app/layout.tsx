@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 
-import { Footer } from "@/components/common/Footer";
-import { Navbar } from "@/components/common/Navbar";
-import { PageTransition } from "@/components/common/PageTransition";
-import { siteInfo } from "@/data/site";
+import { SiteChrome } from "@/components/common/SiteChrome";
+import { siteContent, siteInfo } from "@/data/site";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
@@ -31,7 +29,7 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
@@ -39,9 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <PageTransition>{children}</PageTransition>
-        <Footer />
+        <SiteChrome siteInfo={siteContent.siteInfo}>{children}</SiteChrome>
       </body>
     </html>
   );

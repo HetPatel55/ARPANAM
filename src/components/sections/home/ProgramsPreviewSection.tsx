@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/common/SectionHeading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { imageLibrary, programs } from "@/data/site";
+import type { SiteContent } from "@/types/site";
 
 const programCards = [
   {
@@ -32,24 +33,29 @@ const programCards = [
   }
 ];
 
-export function ProgramsPreviewSection() {
+export function ProgramsPreviewSection({ content }: { content?: SiteContent }) {
+  const cards = programCards.map((program, index) => ({
+    ...program,
+    ...(content?.programs[index] ?? {})
+  }));
+
   return (
     <section className="section-padding bg-[#EFF8FF]">
       <div className="container">
         <Reveal>
           <SectionHeading
-            eyebrow="Programs"
-            title="Purposeful early learning programs for every bright beginning."
+            eyebrow="Programmes"
+            title="Purposeful early learning programmes for every bright beginning."
             description="A balanced path from joyful first routines to confident school readiness, designed around age, pace, and personality."
           />
         </Reveal>
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {programCards.map((program, index) => {
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {cards.map((program, index) => {
             const Icon = program.icon;
             return (
               <Reveal key={program.title} delay={index * 0.07}>
                 <article className="group h-full overflow-hidden rounded-lg border border-blue-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-[0_28px_80px_rgba(29,78,216,0.18)]">
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-56 overflow-hidden">
                     <Image
                       src={program.image}
                       alt={`${program.title} classroom`}
@@ -77,7 +83,7 @@ export function ProgramsPreviewSection() {
                     <p className="mt-3 leading-7 text-slate-600">{program.description}</p>
                     <Button asChild variant="link" className="mt-5">
                       <Link href="/programs">
-                        Explore program
+                        Explore programme
                         <ArrowRight className="h-4 w-4" />
                       </Link>
                     </Button>

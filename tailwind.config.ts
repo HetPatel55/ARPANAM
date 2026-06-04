@@ -13,10 +13,15 @@ const config: Config = {
       center: true,
       padding: {
         DEFAULT: "1rem",
-        lg: "1.5rem"
+        lg: "1.25rem",
+        xl: "1.5rem"
       },
       screens: {
-        "2xl": "1520px"
+        sm: "640px",
+        md: "768px",
+        lg: "960px",
+        xl: "1120px",
+        "2xl": "1240px"
       }
     },
     extend: {
